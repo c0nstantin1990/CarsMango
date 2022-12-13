@@ -32,5 +32,12 @@ router.delete("/:id", async (req, res) => {
     res.status(400).json(error);
   }
 });
+router.put("/:id", async (req, res) => {
+  try {
+    res.json(await Truck.findOneAndUpdate(req.params.id));
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
 
 module.exports = router;
