@@ -18,9 +18,18 @@ router.get("/", async (req, res) => {
     res.status(400).json(error);
   }
 });
+
 router.get("/:id", async (req, res) => {
   try {
-    res.json(await Suv.findById(req.params.ObjectId));
+    res.json(await Suv.findById(req.params.id));
+  } catch (error) {
+    res.status(400).json(error);
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    res.json(await Suv.findOneAndRemove(req.params.id));
   } catch (error) {
     res.status(400).json(error);
   }

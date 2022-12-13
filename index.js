@@ -23,29 +23,29 @@ app.use("/trucks", truckController);
 
 app.use("/suvs", suvController);
 
-// app.get("/showcase", async (req, res) => {
-//   try {
-//     const cars = await Car.find({});
-//     const trucks = await Truck.find({});
-//     const suvs = await Suv.find({});
-//     return res.render("showcase", { cars: cars, trucks: trucks, suvs: suvs });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
-// app.get("/home", (req, res) => {
-//   res.render("home");
-// });
-// app.post("/search", async (req, res) => {
-//   try {
-//     const cars = await Car.find({ make: req.body.make });
-//     const trucks = await Truck.find({ make: req.body.make });
-//     const suvs = await Suv.find({ make: req.body.make });
-//     return res.render("showcase", { cars: cars, trucks: trucks, suvs: suvs });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// });
+app.get("/showcase", async (req, res) => {
+  try {
+    const cars = await Car.find({});
+    const trucks = await Truck.find({});
+    const suvs = await Suv.find({});
+    return res.render("showcase", { cars: cars, trucks: trucks, suvs: suvs });
+  } catch (error) {
+    console.log(error);
+  }
+});
+app.get("/home", (req, res) => {
+  res.render("home");
+});
+app.post("/search", async (req, res) => {
+  try {
+    const cars = await Car.find({ make: req.body.make });
+    const trucks = await Truck.find({ make: req.body.make });
+    const suvs = await Suv.find({ make: req.body.make });
+    return res.render("showcase", { cars: cars, trucks: trucks, suvs: suvs });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 app.listen(app.get("port"), () => {
   console.log(`PORT: ${app.get("port")}`);
