@@ -1,4 +1,4 @@
-const mongoose = require("../db/connection")
+const mongoose = require("../db/connection");
 
 const carSchema = new mongoose.Schema({
   make: String,
@@ -6,8 +6,14 @@ const carSchema = new mongoose.Schema({
   year: Number,
   msrp: Number,
   img: String,
-})
+});
 
-const Car = mongoose.model("Car", carSchema)
+carSchema.method("toJSON", function () {
+  const { __v, _id, ...object } = this.toObject();
+  object.id = _id;
+  return object;
+});
 
-module.exports = Car
+const Car = mongoose.model("Car", carSchema);
+
+module.exports = Car;
